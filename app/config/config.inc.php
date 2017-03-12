@@ -13,9 +13,9 @@ define("PAGINATION_USERS", 4);
 
 
 // Config user
-define("USER_SCHOOL", 2);
-define("USER_ADMIN", 1);
-define("USER_LAMBDA", 0);
+define("USER_SCHOOL", 3);
+define("USER_ADMIN", 2);
+define("USER_LAMBDA", 1);
 
 define("SALT", "romzeer!");
 

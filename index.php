@@ -31,8 +31,21 @@ if(!isset($_GET['action'])) {
 
 $url = "app/controller/" . $module . "/" . $action . ".php";
 
-if (file_exists($url))
+if(isset($_SERVER["PATH_INFO"])) {
+
+include("app/view/404.php");
+}else{
+
+    if (file_exists($url)) 
     include_once($url);
 else
     include_once("app/view/404.php");
+}
+
+
+
+
+
+
+
   

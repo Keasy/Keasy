@@ -10,6 +10,7 @@ if (!isset($_POST["mail"])) {
 
 } else {
 
+
     $_POST["mdp"] = md5($_POST["mdp"] . SALT);
     include_once("app/model/school/verif_login.php");
     $return = verif_login($_POST);
@@ -25,12 +26,11 @@ if (!isset($_POST["mail"])) {
 
         $_SESSION["school"] = $return;
         $_SESSION["level"] = USER_SCHOOL;
-        var_dump($_SESSION);
 
 
         header("Location:?module=school&action=index&school=". $_SESSION['school']['school_id']);
         exit;
 
     }
-
+    
 }

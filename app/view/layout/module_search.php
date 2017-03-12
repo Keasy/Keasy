@@ -1,5 +1,5 @@
 
-      
+
 					
 						<form id="search" action="#" method="POST">
 						<?php 
@@ -13,12 +13,18 @@
             <select name="type" class="dropdown" id="listtype">
               <option value="0">Pick type</option>
             </select>
+            <select name="type" class="dropdown" id="listtype">
+              <option value="0">Pick type</option>
+            </select>
+            <select name="type" class="dropdown" id="listtype">
+              <option value="0">Pick type</option>
+            </select>
               
-     
-					<input type="submit" value="Rechercher"/>
 					</form>
+<button  type="submit" >Rechercher</button>
+ 
+					
 
-<h3>Liste des logements disponibles</h3>
 
 <div id="testSearch">
 </div>
@@ -36,4 +42,8 @@ $(document).ready( function() {
     return false;
   });
 });
+
+
+
+
 </script>

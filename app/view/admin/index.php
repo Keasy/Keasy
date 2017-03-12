@@ -1,19 +1,7 @@
 <?php
 if(!defined("_BASE_URL")) die("Ressource interdite !");?>
 
-<!DOCTYPE html>
-<html lang="<?php echo PAGE_LANG; ?>">
-<head>
-    <meta charset="<?php echo PAGE_CHARSET ?>">
-    <title><?php echo PAGE_TITLE; ?></title>
-    <link rel="stylesheet" type="text/css" href="webroot/css/global.css" >
-     <script type="text/javascript" src="webroot/js/jQuery-3.1.1.js"></script> 
-    <link rel="stylesheet" type="text/css" href="webroot/css/bootstrap.css" >
-    <script src="webroot/js/bootstrap.js"></script>  
-    
-    
-
-</head>
+<?php include 'app/view/layout/admin/header.php' ?>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -78,7 +66,7 @@ if(!defined("_BASE_URL")) die("Ressource interdite !");?>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane <?php if(!isset($_GET['tab'])){echo 'active';}?>" id="home"><?php include ('app/view/admin/logements.php');?></div>
             <div role="tabpanel" class="tab-pane" id="profile"><?php include('app/view/admin/users.php');?></div>
-            <div role="tabpanel" class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab'] == 'com') {echo 'active';} ?>" id="messages"><?php include('app/view/layout/commentaires.php');?></div>
+            <div role="tabpanel" class="tab-pane <?php if(isset($_GET['tab']) && $_GET['tab'] == 'com') {echo 'active';} ?>" id="messages"><?php include('app/view/layout/admin/commentaires.php');?></div>
             <div role="tabpanel" class="tab-pane" id="settings">test4</div>
             <div role="tabpanel" class="tab-pane" id="settings">test5</div>
 
