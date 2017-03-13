@@ -486,6 +486,9 @@ button:hover {
   color: grey;
 }
 
-
+.vResa .resa {
+  border: 1px solid black;
+  width: 100%;
+}
 
 

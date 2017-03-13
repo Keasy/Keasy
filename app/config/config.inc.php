@@ -21,5 +21,7 @@ define("SALT", "romzeer!");
 
 define("ENV", "DEV");
 
+define("TARGET_DIR", "webroot/upload_certif/");
+
 define("MAIL_EXPEDITEUR", "romain.peyret1@gmail.com");
 define("NOM_EXPEDITEUR", "Mon super blog");
