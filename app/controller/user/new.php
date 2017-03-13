@@ -47,6 +47,5 @@ if(isset($_POST["login"])) {
 }  
 
 
-define("BODY_CLASS", "newuserlambda");
-define("PAGE_TITLE", "Ajouter un nouveau utilisateur");
-include_once("app/view/user/new_user.php");
+
+include_once("app/view/logement/index.php");

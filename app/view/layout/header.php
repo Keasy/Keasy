@@ -7,11 +7,13 @@ if(!defined("_BASE_URL")) die("Ressource interdite !");
 <head>
   <meta charset="<?php echo PAGE_CHARSET ?>">
   <title><?php echo PAGE_TITLE; ?></title>
+  <link rel="stylesheet" href="webroot/css/font-awesome.min.css">
+
   <link rel="stylesheet" type="text/css" href="webroot/css/global.css" >
    <script src="webroot/js/jQuery-3.1.1.js"></script>
 </head>
 <body class="<?php echo BODY_CLASS; ?>">
-
+<div class="fil"></div>
  <header>
    <div class="header">
    
@@ -19,12 +21,12 @@ if(!defined("_BASE_URL")) die("Ressource interdite !");
  
        <?php if (!isset($_SESSION['user'])) { ?>
          <div>
-           <a href="index.php?module=user&action=login">Connexion</a>
+           <a id="connexionOn" href="#">Connexion</a>
 
          </div>
          <div>|</div>
          <div>
-           <a href="index.php?module=user&action=new">Inscription</a>
+           <a href="#" id="inscriptionOn">Inscription</a>
          </div>
        <?php }
       

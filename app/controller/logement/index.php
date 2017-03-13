@@ -10,6 +10,10 @@ $types = selecttable('cat_logement', array("orderby" => "logement_category_type"
                                                         "order" => "ASC",
                                         "limite" => ":offset", ":limit"
                                         ));
+$catid = selecttable('cat_user', array("orderby" => "user_category_type",
+                                                        "order" => "ASC",
+                                        "limite" => ":offset", ":limit"
+                                        ));
 
 
 define("BODY_CLASS", "logements");

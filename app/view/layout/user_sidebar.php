@@ -7,7 +7,7 @@
         <li><a href="?module=user&action=reservation">Mes réservations</a></li>
        <?php } 
         else if ($_SESSION["user"]["cat_user_id"] == 2) { ?>
-            <li>Mes logements</li>
+            <li><a href="?module=user&action=logement">Mes logements</a></li>
         <?php } ?>
         <li>Messagerie</li>
     </ul>
