@@ -8,8 +8,13 @@ $types = selecttable('cat_logement', array("orderby" => "logement_category_type"
                                         "limite" => ":offset", ":limit"
                                         ));
 
+
 include_once("app/model/logement/list_logement.php");
- $pays=$_GET['pays'];
+
+if (isset($_GET['place'])) {
+
+
+ $pays=$_GET['place'];
  $type=$_GET['type'];
 
 
@@ -23,18 +28,17 @@ else {
 
 
 $logements = lire_logements($offset, PAGINATION_LOGEMENT, $pays, $type);
-var_dump($logements);
-
-
-
-
 $nb_logements = counttable("logement", $options);
+ 
+}
+
 
 
 
 
 define("BODY_CLASS", "search");
 define("PAGE_TITLE", "Liste des résultats");
+
 include_once("app/view/logement/search.php");
 
 ?>

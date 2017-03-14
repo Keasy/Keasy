@@ -4,8 +4,6 @@ include_once("../../app/config/config.inc.php");
 include_once("../../app/model/pdo.inc.php");
 
 
-
-
 try {
     //On envoie la requête
     $query = $pdo->prepare('SELECT logement_id, logement_name, logement_price, cat_id, logement_category_type, place_name, 
@@ -19,26 +17,31 @@ try {
                                         AND place_id= :place');
                                         
   
-    $query->bindParam(':place', $_GET['place'], PDO::PARAM_INT);
-    $query->bindParam(':type', $_GET['type'], PDO::PARAM_INT);
+    $query->bindParam(':place', $_POST['place'], PDO::PARAM_INT);
+    $query->bindParam(':type', $_POST['type'], PDO::PARAM_INT);
     $query->execute();
-    $logements = $query->fetchAll();
+    $loge = $query->fetchAll();
     $query->closeCursor();
     //On retourne tous les lire_articles
-    	foreach($logements as $logement) { 
+    $return = "";
+    foreach($loge as $log) { 
 								
-        echo " <div class='logement'>";
-      
-        echo "<h2>".$logement['logement_name']."</h2>";
-        echo "<p>".$logement['logement_price']."</p>";
-        echo "<p>".$logement['contenu']."</p>";
-        echo "<p>".$logement['logement_category_type']."</p>";
+       $return.= " <div class='logement'>";
+        $return .= "<h2>".$log['logement_name']."</h2>";
+         $return .="<p>".$log['logement_price']."</p>";
+        $return .="<p>".$log['contenu']."</p>";
+        $return .="<p>".$log['logement_category_type']."</p>";
 
-       echo '<a class="menu_title" href="?module=logement&action=detail&id='.$logement['logement_id'].'"> Lire la suite</a>';
-       echo " </div>";
+       $return .='<a class="menu_title" href="?module=logement&action=detail&id='.$log['logement_id'].'"> Lire la suite</a>';
+       $return .=" </div>";
        
     }
-    
+    if (!isset($return)) {
+    echo "<div class='logement'>Désolé aucun logement ne correspond à votre recherche</div>";
+    }
+    else {
+        echo $return;
+    }
 
 }
 
