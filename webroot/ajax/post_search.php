@@ -3,22 +3,26 @@ define("_BASE_URL", true);
 include_once("../../app/config/config.inc.php");
 include_once("../../app/model/pdo.inc.php");
 
-
+ $repertoire = "webroot/photos/";
 try {
     //On envoie la requête
     $query = $pdo->prepare('SELECT logement_id, logement_name, logement_price, cat_id, logement_category_type, place_name, 
-                                        left(logement_details,298) as contenu
+                                        logement_details, logement_photo
                                         FROM logement
                                         INNER JOIN cat_logement
                                         ON logement.cat_id = cat_logement.logement_cat_id
                                         INNER JOIN location_place
                                         ON logement.location_place_id = location_place.place_id 
                                         WHERE logement_cat_id= :type
-                                        AND place_id= :place');
+                                        AND place_id= :place
+                                        AND logement_details LIKE :clause');
                                         
   
+    $clause = '%' . trim($_POST["saisie"]) . '%';
+
     $query->bindParam(':place', $_POST['place'], PDO::PARAM_INT);
     $query->bindParam(':type', $_POST['type'], PDO::PARAM_INT);
+    $query->bindParam(':clause', $clause, PDO::PARAM_STR);
     $query->execute();
     $loge = $query->fetchAll();
     $query->closeCursor();
@@ -27,16 +31,18 @@ try {
     foreach($loge as $log) { 
 								
        $return.= " <div class='logement'>";
-        $return .= "<h2>".$log['logement_name']."</h2>";
-         $return .="<p>".$log['logement_price']."</p>";
-        $return .="<p>".$log['contenu']."</p>";
+       $return .= "<img src='".$repertoire.$log['logement_photo']."'/>";
+       $return .= "<div class='info_logement'>";
+        $return .= "<span class='title'>".$log['logement_name']."</span>";
+        $return .="<p>".$log['logement_details']."</p>";
         $return .="<p>".$log['logement_category_type']."</p>";
-
-       $return .='<a class="menu_title" href="?module=logement&action=detail&id='.$log['logement_id'].'"> Lire la suite</a>';
+        $return .="<span id='price'>".$log['logement_price']."/mois</span>";
+        $return .= "</div>";
+       $return .='<a href="?module=logement&action=detail&id='.$log['logement_id'].'"> <span id="plus">+</span> de détails</a>';
        $return .=" </div>";
        
     }
-    if (!isset($return)) {
+    if (empty($return)) {
     echo "<div class='logement'>Désolé aucun logement ne correspond à votre recherche</div>";
     }
     else {

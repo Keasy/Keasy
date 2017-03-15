@@ -7,7 +7,10 @@ if(!defined("_BASE_URL")) die("Ressource interdite !");
 <head>
   <meta charset="<?php echo PAGE_CHARSET ?>">
   <title><?php echo PAGE_TITLE; ?></title>
+  <link rel="stylesheet" href="webroot/fonts/fontawesome-webfont.woff">
   <link rel="stylesheet" href="webroot/css/font-awesome.min.css">
+
+  
 
   <link rel="stylesheet" type="text/css" href="webroot/css/global.css" >
    <script src="webroot/js/jQuery-3.1.1.js"></script>

@@ -6,7 +6,7 @@ function lire_logements($offset, $limite, $pays, $type)
 
 try {
     //On envoie la requête
-    $query = $pdo->prepare('SELECT logement_id, logement_name, logement_price, cat_id, logement_category_type, place_name, 
+    $query = $pdo->prepare('SELECT logement_id, logement_name, logement_price, cat_id, logement_category_type, place_name, logement_photo,
                                         left(logement_details,298) as contenu
                                         FROM logement
                                         INNER JOIN cat_logement
